@@ -1,0 +1,149 @@
+<tool-bar [progTitleChild]="title" 
+		  [hasData]="hasData"
+		  (outInsert)="onInsert()"
+		  (outUpdate)="onUpdate()"
+		  (outDelete)="onDelete()"
+		  (outQuery)="onQuery()"
+		  (outFindWindow)="onFindWindow()"
+		  (outPrev)="onPrev()"
+		  (outNext)="onNext()"
+		  (outClear)="onClearForm()">
+</tool-bar>
+
+<div class = "background-frame">
+	<div class = "record-count">
+		紀錄:{{this.rowIndex + 1}}/{{this.idList.length}}
+	</div>
+	<form [formGroup]="form1" class="mt-2">
+		<table>
+			<tr>
+				<td><label>物料代號</label></td>
+				<td>
+					<input formControlName="mtlNo1" width="60" upper-case />
+					<button mat-icon-button tabindex="-1" (click)="searchMtlKnd1()">
+						<mat-icon>search</mat-icon>
+					</button>
+				</td>
+				<td>
+					<input formControlName="mtlNo2" width="100" upper-case />
+					<button mat-icon-button tabindex="-1" (click)="searchMtlKnd2()">
+						<mat-icon>search</mat-icon>
+					</button>
+				</td>
+				<td>
+					<input formControlName="mtlNo3" width="200" upper-case />
+				</td>
+				<td><label>大類名稱</label></td>
+				<td><input formControlName="mtlKnd1Name" width="173" readonly /></td>
+			</tr>
+			<tr >
+				<td><label>物料名稱</label></td>
+				<td colspan="3"><input formControlName="mtlName" width="387" /> </td>
+
+				<td><label>中類名稱</label></td>
+				<td><input formControlName="mtlKnd2Name" width="173" readonly /></td>
+			</tr>
+			<tr>
+				<td><label>物料規格</label></td>
+				<td colspan="3"><input formControlName="mtlSpec" width="387"/> </td>
+			</tr>
+
+			<tr>
+				<td colspan="13">
+					<!-- <hr style="border: 1px dashed red;"> -->
+					<mat-divider></mat-divider>
+				</td>
+			</tr>
+
+			<tr>
+				<td><label>物料等級</label></td>
+				<td colspan="2">
+						<mat-select formControlName="mtlGrade" width="173">
+							<mat-option>None</mat-option>
+							<mat-option *ngFor="let mtlGrade of mtlGradeList" [value]="mtlGrade">
+								{{mtlGrade}}
+							</mat-option>
+						</mat-select>
+				</td>
+
+				<td><label>模具標準壽命</label></td>
+				<td><input formControlName="stdUsedQty" appNumeric width="173" /></td>
+
+				<td><label>在途時間</label></td>
+				<td><input formControlName="leadTime" appNumeric width="173" /></td>
+
+				<td width="173"><label>停用否(Y/N)</label></td>
+				<td><input formControlName="stopYn" width="173" /></td>
+			</tr>
+			<tr>
+				<td><label>採購單位</label></td>
+				<td colspan="2"><input formControlName="purUnit" width="173" />
+					<button mat-icon-button tabindex="-1" (click)="searchCodMast('MUNT','purUnit')">
+						<mat-icon>search</mat-icon>
+					</button>
+				</td>
+
+				<td><label>安全庫存量</label></td>
+				<td><input formControlName="saveQty" appNumeric width="173" /></td>
+
+				<td><label>請購週期(天)</label></td>
+				<td><input formControlName="reqCycle" appNumeric width="173" /></td>
+
+				<td><label>停用日期</label></td>
+				<td><input formControlName="stopDate" width="173" readonly /></td>
+			</tr>
+			<tr>
+				<td><label>庫存單位</label></td>
+				<td colspan="2">
+					<input formControlName="stkUnit" width="173" />
+					<button mat-icon-button tabindex="-1" (click)="searchCodMast('MUNT','stkUnit')">
+						<mat-icon>search</mat-icon>
+					</button>
+				</td>
+
+
+				<td><label>允收百分比</label></td>
+				<td><input formControlName="inAllow" appNumeric width="173" /></td>
+
+				<td><label>儲位</label></td>
+				<td><input formControlName="location" width="173" /></td>
+
+				<td><label>停用人員</label></td>
+				<td><input formControlName="stopEmp" width="173" readonly /></td>
+			</tr>
+			<tr>
+				<td><label>換算比例</label></td>
+				<td colspan="2"><input formControlName="tranRate" appNumeric width="173" /></td>
+				<td><label>材質</label></td>
+				<td><input formControlName="material" width="173" /></td>
+			</tr>
+			<tr>
+				<td><label>版次</label></td>
+				<td colspan="2"><input formControlName="verNo" appNumeric width="173" /></td>
+				<td><label>圖面編號</label></td>
+				<td><input formControlName="grapNo" width="173" /></td>
+			</tr>
+
+			<tr>
+				<td colspan="13">
+					<!-- <hr style="border: 1px dashed red;"> -->
+					<mat-divider></mat-divider>
+				</td>
+			</tr>
+
+			<tr>
+				<td><label>首次進貨日</label></td>
+				<td colspan="2"><input formControlName="firstInDate" width="173" readonly /></td>
+				<td><label>最近進貨日</label></td>
+				<td><input formControlName="lastInDate" width="173" readonly /></td>
+				<td><label>最近領用日</label></td>
+				<td><input formControlName="lastIssuDate" width="173" readonly /></td>
+			</tr>
+			<tr>
+				<td><label>備註</label></td>
+				<td colspan="5"> <textarea rows="3" cols="60"></textarea> </td>
+			</tr>
+		</table>
+	</form>
+</div>
+<button #mike mat-raised-button color="primary" disabled> hello </button>

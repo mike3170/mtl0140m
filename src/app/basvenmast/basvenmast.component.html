@@ -1,0 +1,169 @@
+<tool-bar [progTitleChild]="progTitle" 
+		  (outInsert)="onInsert()"
+		  (outUpdate)="onUpdate()"
+		  (outDelete)="onDelete()"
+		  (outQuery)="onQuery()"
+		  (outPrev)="onPrev()"
+		  (outNext)="onNext()"
+		  (outClear)="onClearForm()">
+</tool-bar>
+<div class = "background-frame">
+	<!-- <div class = "record-count">
+		紀錄:{{this.rowIndex + 1}}/{{this.idList.length}}
+	</div> -->
+	<form [formGroup]="form1" class="mt-2">
+		<table>
+			<tr>
+				<td><label>廠商代號</label></td>
+				<td>
+					<input formControlName="venNo" width="100" upper-case />
+				</td>
+				<td><label>建立日期</label></td>
+                <td>					
+                    <input formControlName="creaDate" width="120" readonly/>
+				</td>
+                <td><label>廠商名稱</label></td>
+				<td colspan="3">
+					<input formControlName="venName" width="400" upper-case />
+				</td>
+			</tr>
+			<tr>
+				<td><label>廠商簡稱</label></td>
+				<td>
+					<input formControlName="venAbbr" width="200" upper-case />
+				</td>
+				<td><label>廠商英文名稱</label></td>
+                <td>					
+                    <input formControlName="venNameE" width="100" upper-case />
+				</td>
+                <td><label>機台代號</label></td>
+				<td>
+					<input formControlName="mchNo" width="100" upper-case />
+				</td>
+			</tr>
+			<tr>
+				<td colspan="13">
+					<!-- <hr style="border: 1px dashed red;"> -->
+					<mat-divider></mat-divider>
+				</td>
+			</tr>			
+			<tr>
+				<td><label>付款條件</label></td>
+				<td>
+					<input formControlName="paymentTerm" width="70" upper-case />
+					<button mat-icon-button tabindex="-1" style="margin-left: -40px;" (click)="searchCodMast('APTM','paymentTerm')">
+						<mat-icon>search</mat-icon>
+					</button>					
+					<input formControlName="payTermName" width="100" readonly />
+				</td>
+				<td><label>付款天數</label></td>
+                <td>
+                    <input formControlName="payDays" width="50" appNumeric upper-case />
+				</td>
+                <td><label>發票別</label></td>
+				<td>
+					<input formControlName="invKind" width="60" upper-case />
+					<button mat-icon-button tabindex="-1" style="margin-left: -40px;" (click)="searchCodMast('AINV','invKind')">
+						<mat-icon>search</mat-icon>
+					</button>					
+					<input formControlName="invKindName" width="110" readonly />
+				</td>
+                <td><label>統一編號</label></td>
+				<td>
+					<input formControlName="taxId" width="150" upper-case />
+				</td>
+                <td><label>停用</label></td>
+				<td>
+					<input formControlName="stopYn" width="50" upper-case />
+				</td>				
+			</tr>
+			<tr>
+				<td><label>付款方式</label></td>
+				<td>
+					<input formControlName="payKind" width="70" upper-case />
+					<button mat-icon-button tabindex="-1" style="margin-left: -40px;"  (click)="searchCodMast('ACPK','payKind')">
+						<mat-icon>search</mat-icon>
+					</button>						
+					<input formControlName="payKindName" width="100" readonly />
+				</td>
+				<td><label>交易幣別</label></td>
+                <td>
+                    <input formControlName="currNo" width="80" upper-case />
+					<button mat-icon-button tabindex="-1" style="margin-left: -40px;" (click)="searchCodMast('CURR','currNo')">
+						<mat-icon>search</mat-icon>
+					</button>						
+				</td>
+                <td><label>稅率別</label></td>
+				<td>
+					<input formControlName="taxKind" width="60" upper-case />
+					<button mat-icon-button tabindex="-1" style="margin-left: -40px;" (click)="searchCodMast('ATAX','taxKind')">
+						<mat-icon>search</mat-icon>
+					</button>					
+					<input formControlName="taxKindName" width="110" readonly />
+				</td>
+                <td><label>帳款月截止日</label></td>
+				<td>
+					<input formControlName="billEnd" width="100" upper-case />
+				</td>
+			
+			</tr>
+			<tr>
+				<td colspan="13">
+					<mat-divider></mat-divider>
+				</td>
+			</tr>
+			<tr>
+				<td><label>對應客戶代號</label></td>
+				<td>
+					<input formControlName="cstNo" width="70" upper-case />
+					<button mat-icon-button tabindex="-1" style="margin-left: -40px;" (click)="searchCstMast()">
+						<mat-icon>search</mat-icon>
+					</button>							
+					<input formControlName="cstName" width="100" readonly />
+					<span style="color: rgb(38, 133, 241);">(用於應收與應付互沖)</span>
+				</td>
+				<td><label>盤圓損耗率</label></td>
+                <td>
+                    <input formControlName="wirLoss" width="100" appNumeric />
+					<span>%</span>
+				</td>
+                <td><label>製造能力</label></td>
+				<td>
+					<input formControlName="makeAbility" width="50"/>
+					<input formControlName="makeAbilityName" width="70" readonly />
+				</td>
+                <td><label>品質</label></td>
+				<td>
+					<input formControlName="quality" width="50" upper-case />
+					<input formControlName="qualityName" width="70" readonly />
+				</td>			
+			</tr>
+			<tr>
+				<td colspan="13">
+					<mat-divider></mat-divider>
+				</td>
+			</tr>
+			<tr class="line-h-3">
+                <td><label>網址</label></td>
+				<td colspan="1">
+					<input formControlName="webSite" width="250"/>
+				</td>
+                <td><label>最低加工費</label></td>
+				<td>
+					<input formControlName="lowProcAmt" width="100" appNumeric/>
+				</td>			
+			</tr>
+			<tr>
+				<td colspan="13">
+					<mat-divider></mat-divider>
+				</td>
+			</tr>
+			<tr>
+				<td><label>地址</label></td>
+				<td colspan="3">
+					<input formControlName="venAddr1" width="600"/>
+				</td>
+			</tr>
+		</table>
+	</form>    
+</div>

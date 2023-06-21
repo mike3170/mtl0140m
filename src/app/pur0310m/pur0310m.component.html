@@ -1,0 +1,13 @@
+<tool-bar [progTitleChild]="title" 
+          [hasData]="hasData"
+          (outInsert)="onInsert()"
+          (outUpdate)="onUpdate()"
+          (outDelete)="onDelete()"
+          (outQuery)="onQuery()"
+          (outFindWindow)="onFindWindow()"
+          (outPrev)="onPrev()"
+          (outNext)="onNext()"
+          (outClear)="onClearForm()">
+</tool-bar>
+<app-mtl-pur-orde-m [purOrdeMaterBody]="mtlPurOrdeM" ></app-mtl-pur-orde-m>
+<app-mtl-pur-orde-d [purOrdeDetailBody]="mtlPurOrdeD"></app-mtl-pur-orde-d>

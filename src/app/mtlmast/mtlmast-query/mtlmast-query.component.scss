@@ -1,0 +1,18 @@
+.card-bg {
+	background-color: #eee;
+}
+
+.buttons {
+	display: flex; 
+	justify-content: center; 
+	margin-top: 1em;
+}
+
+.buttons button + button {
+	margin-left: .5em;
+}
+
+table tr td:first-child {
+	font-weight: bold;
+	color: brown;
+}

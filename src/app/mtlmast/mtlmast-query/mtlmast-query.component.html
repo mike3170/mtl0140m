@@ -1,0 +1,27 @@
+<h3 class="m-0">物料資料查詢<small class="text-muted ms-2">Enter-執行</small></h3>
+
+<div class="card-bg" >
+	<fieldset>
+		<legend>hello mike</legend>
+	<form [formGroup]="formQuery" (ngSubmit)="query()" >
+		<table>
+			<tr>
+				<td>物料代號</td>
+				<td><input formControlName="mtlNoB" /> </td>
+				<td>~</td>
+				<td><input formControlName="mtlNoE" /> </td>				
+			</tr>
+			<tr>
+				<td>物料等級</td>
+				<td><input formControlName="mtlGrade" /></td>
+			</tr>			
+		</table>
+
+		<div class="buttons" >
+			<button type="button" mat-raised-button (click)="cancel()">取消查詢<mat-icon>close</mat-icon></button>
+			<button type="button" mat-raised-button (click)="clear()">清除畫面</button>
+			<button type="submit" mat-raised-button color="primary">開始查詢</button>
+		</div>
+	</form>
+</fieldset>
+</div>

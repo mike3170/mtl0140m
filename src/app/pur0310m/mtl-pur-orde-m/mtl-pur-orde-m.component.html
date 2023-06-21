@@ -1,0 +1,31 @@
+<div class="background-frame">
+    <div class="record-count">
+        紀錄:{{this.rowIndex + 1}}/{{this.idList.length}}
+    </div>
+    <form [formGroup]="formM" class="mt-2">
+        <table>
+            <tr>
+                <td><label>訂購日期</label></td>
+                <td width="160px"><input formControlName="poDate" width="130px"></td>
+                <td><label>廠商</label></td>
+                <td><input formControlName="venNo" width="100px"></td>
+                <td width="190px"><input width="160px" readonly></td>
+                <td><label>付款方式</label></td>
+                <td><input formControlName="payKind" width="80px"></td>
+                <td><input readonly></td>
+            </tr>
+            <tr>
+                <td><label>訂購單號</label></td>
+                <td><input formControlName="poNo" width="130px" readonly></td>
+                <td><label>付款條件</label></td>
+                <td><input formControlName="paymentTerm" width="100px"></td>
+                <td><input width="150px" readonly></td>
+                <td><label>付款天數</label></td>
+                <td><input formControlName="payDays" width="80px"></td>
+                <td style="display: flex; float: right;">
+                    <label>幣別</label><input formControlName="currNo" width="100px">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>

@@ -1,0 +1,33 @@
+<!-- <header>
+	<h4 class="title" >部門代號, 名稱查詢</h4>
+</header> -->
+<!-- 
+<form [formGroup]="formDeptSearch" (ngSubmit)=search() class="flex-row">
+		<input type="text" formControlName="deptNo" placeholder="部門代號">
+		<input type="text" formControlName="deptName" placeholder="部門名稱">
+		<button type="submit" mat-flat-button color="primary" >執行</button>
+</form> -->
+
+<mat-dialog-content>
+	<table *ngIf="mtlKnd2List.length > 0; else noData">
+		<thead>
+			<tr>
+				<th>物料中類 </th>
+				<th>中類名稱</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let c of mtlKnd2List" (click)="select(c)">
+				<td>{{c.mtlNo2}}</td>
+				<td>{{c.knd2Name}}</td>
+			</tr>
+		</tbody>
+	</table>
+</mat-dialog-content>
+
+
+<ng-template #noData>
+	<h2>
+		{{mesg}}
+	</h2>
+</ng-template>
