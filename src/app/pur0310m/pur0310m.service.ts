@@ -38,6 +38,11 @@ export class Pur0310mService {
 		return this.http.get<Api>(url);
 	}
 
+	findOrderDetail(poNo: string): Observable<Api> {
+		const url = `${this.baseUrl}/mtlpurorded/${poNo}`;
+		return this.http.get<Api>(url);
+	}
+
 	findByIdDetail(poNo: string, itemNo: string): Observable<Api> {
 		const url = `${this.baseUrl}/mtlpurorded/${poNo}/${itemNo}`;
 		return this.http.get<Api>(url);

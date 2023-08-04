@@ -5,6 +5,7 @@ import { MtlPurOrdeD } from './mtl-pur-orde-d';
 import { MtlPurOrdeDetailPk } from './mtl-pur-orde-d-pk';
 import { MtlPurOrdeM } from './mtl-pur-orde-m';
 import { Pur0310mService } from './pur0310m.service';
+import { MtlPurOrdeMasterPk } from './mtl-pur-orde-m-pk';
 
 @Component({
   selector: 'app-pur0310m',
@@ -22,6 +23,7 @@ export class Pur0310mComponent implements OnInit {
   mtlPurOrdeM: MtlPurOrdeM;
   mtlPurOrdeDList: MtlPurOrdeD[] = [];
   mtlPurOrdeD: MtlPurOrdeD;
+  mtlPurOrdeMasterPkList: MtlPurOrdeMasterPk[] = [];
   mtlPurOrdeDetailPkList: MtlPurOrdeDetailPk[] = [];
 
   @Output() outPutDetail = new EventEmitter<any>();
@@ -53,19 +55,19 @@ export class Pur0310mComponent implements OnInit {
     await this.pru0310mSvc.findAllMater()
       .subscribe(resp => {
         this.idList = resp.data;
+        this.mtlPurOrdeMasterPkList = resp.data;
         this.rowIndex = 0;
         this.hasData = this.idList.length > 0;
         this.fetchOrder(this.idList[this.rowIndex]);
       });
 
-    this.pru0310mSvc.findAllDetail("PY14120001")
-      .subscribe(resp => {
-        this.mtlPurOrdeDetailPkList = resp.data;
-        // this.outPutDetail.emit(this.x);
-      });
-      console.log(this.mtlPurOrdeDetailPkList.length);
-      
-    this.fetchOrderDetail(this.mtlPurOrdeDetailPkList);
+    // this.pru0310mSvc.findAllDetail("PY14120001")
+    //   .subscribe(resp => {
+    //     this.mtlPurOrdeDetailPkList = resp.data;
+    //     // this.outPutDetail.emit(this.x);
+    //   });
+    //   console.log(this.mtlPurOrdeDetailPkList.length);
+    this.fetchOrderDetail("PY14120001");
     this.outPutDetail.emit(this.mtlPurOrdeDList);
   }
 
@@ -92,14 +94,23 @@ export class Pur0310mComponent implements OnInit {
       });
   }
 
-  fetchOrderDetail(mtlPurOrdeDetailPk: MtlPurOrdeDetailPk[]) {
-    mtlPurOrdeDetailPk.forEach(detailPk => {
-      this.pru0310mSvc.findByIdDetail(detailPk.poNo, detailPk.itemNo)
+  fetchOrderDetail(poNo: string) {
+      this.pru0310mSvc.findOrderDetail(poNo)
         .subscribe(resp => {
           this.mtlPurOrdeD = resp.data;
 
           this.mtlPurOrdeDList.push(this.mtlPurOrdeD)
         });
-    })
+    
   }
+  // fetchOrderDetail(mtlPurOrdeDetailPk: MtlPurOrdeDetailPk[]) {
+  //   mtlPurOrdeDetailPk.forEach(detailPk => {
+  //     this.pru0310mSvc.findByIdDetail(detailPk.poNo, detailPk.itemNo)
+  //       .subscribe(resp => {
+  //         this.mtlPurOrdeD = resp.data;
+
+  //         this.mtlPurOrdeDList.push(this.mtlPurOrdeD)
+  //       });
+  //   })
+  // }
 }
