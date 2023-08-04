@@ -17,7 +17,7 @@ export class MtlPurOrdeDComponent implements OnInit {
   }
 
   columnDefs: ColDef[] = [
-    {headerClass:'ag-center-header', headerName:'項次', field: 'item', width: 100, resizable: true, type: 'numericColumn'},
+    {headerClass:'ag-center-header', headerName:'項次', field: 'itemNo', width: 100, resizable: true, type: 'numericColumn'},
     {headerClass:'ag-center-header', headerName:'物料代號', field: 'mtlNo', editable: true, resizable: true, filter: 'agTextColumnFilter', sortable: true},
     { headerName:'訂購量', field: 'poQty', editable: true, resizable: true, type: 'numericColumn', sortable: true, width: 100},
     { headerName:'計量單位', field: 'stkUnit', editable: true, resizable: true},
@@ -37,10 +37,7 @@ export class MtlPurOrdeDComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  ngOnChanges(): void {    
-    this.rowData = [this.purOrdeDetailBody];
-    
-  }
+
   onFirstDataRendered(params: any) {
     // console.log(params);
     

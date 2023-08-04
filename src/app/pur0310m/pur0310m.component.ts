@@ -61,7 +61,6 @@ export class Pur0310mComponent implements OnInit {
     this.pru0310mSvc.findAllDetail("PY14120001")
       .subscribe(resp => {
         this.mtlPurOrdeDetailPkList = resp.data;
-
         // this.outPutDetail.emit(this.x);
       });
       console.log(this.mtlPurOrdeDetailPkList.length);
