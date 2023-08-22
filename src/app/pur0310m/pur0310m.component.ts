@@ -97,9 +97,14 @@ export class Pur0310mComponent implements OnInit {
   fetchOrderDetail(poNo: string) {
       this.pru0310mSvc.findOrderDetail(poNo)
         .subscribe(resp => {
-          this.mtlPurOrdeD = resp.data;
-
-          this.mtlPurOrdeDList.push(this.mtlPurOrdeD)
+           this.mtlPurOrdeD = resp.data;
+           console.log(resp.data[0]);
+           
+           console.log("poqty:"+ JSON.stringify(this.mtlPurOrdeD.poQty));
+           
+           console.log("poprice:"+ JSON.stringify(this.mtlPurOrdeD.poPrice));
+           
+           this.mtlPurOrdeDList.push(this.mtlPurOrdeD)
         });
     
   }
